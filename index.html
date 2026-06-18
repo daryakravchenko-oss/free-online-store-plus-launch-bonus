@@ -1995,7 +1995,9 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   align-items: center;
   justify-content: center;
   gap: 14px;
-  background: linear-gradient(90deg, #ff6820, #f5a623);
+  background: linear-gradient(90deg, #2a1606, #c2a06c, #2a1606);
+  background-size: 200% 100%;
+  animation: topbarFlow 9s ease-in-out infinite;
   padding: 10px 24px;
   font-size: 14px;
   font-weight: 500;
@@ -2004,10 +2006,11 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   letter-spacing: -0.01em;
   text-decoration: none;
 }
+@keyframes topbarFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 .topbar:hover { opacity: 0.95; }
 .topbar-badge {
   background: #fff;
-  color: #FA8221;
+  color: #02040c;
   font-size: 10px;
   font-weight: 800;
   padding: 4px 10px;
@@ -2061,7 +2064,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
     </a>
     <!-- CENTER: links -->
     <ul class="nav-links">
-      <li><a href="#bonus">VIP Bundle</a></li>
+      <li><a href="#bonus">Bonus</a></li>
       <li><a href="#get">What's free</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -2101,13 +2104,13 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
 /* LEFT – copy */
 .hero--devin-v2 .copy { color: #fff; position: relative; }
 .hero--devin-v2 .copy h1 {
-  font-family: 'DM Serif Text', Georgia, serif; font-weight: 400;
+  font-family: var(--font-sans); font-weight: 700;
   font-size: clamp(44px, 5.2vw, 70px);
-  letter-spacing: -0.02em; line-height: 1.06;
+  letter-spacing: -0.04em; line-height: 1.03;
   margin: 0 0 26px; color: #fff; text-wrap: balance;
 }
 .hero--devin-v2 .copy h1 .amber {
-  font-style: normal; font-weight: 400;
+  font-style: normal; font-weight: 700;
   background: linear-gradient(90deg,
     #b8862e 0%, #e8b873 18%, #f7e3a8 36%, #ffd576 54%,
     #d4a04a 72%, #f0c977 88%, #b8862e 100%);
@@ -2180,7 +2183,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
 
 /* RIGHT – bonus ladder table, styled like the hero glass cards
    (same colors, translucent substrate, blur and gold-gradient hairline). */
-.hero--devin-v2 .ladder {
+.ladder {
   position: relative;
   width: 100%; max-width: 440px; justify-self: end;
   border-radius: 18px; padding: 30px 30px 24px;
@@ -2191,7 +2194,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   color: rgba(255,245,230,0.92);
   overflow: hidden;
 }
-.hero--devin-v2 .ladder::before {
+.ladder::before {
   content: ''; position: absolute; inset: 0;
   border-radius: 18px; padding: 1px;
   background: linear-gradient(135deg,
@@ -2202,24 +2205,24 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   -webkit-mask-composite: xor; mask-composite: exclude;
   pointer-events: none; opacity: 0.6;
 }
-.hero--devin-v2 .ladder h4 {
+.ladder h4 {
   position: relative; z-index: 1;
   font-family: var(--font-sans);
   font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em;
   text-transform: uppercase; color: #f0c977; margin: 0 0 6px;
 }
-.hero--devin-v2 .ladder .big {
+.ladder .big {
   position: relative; z-index: 1;
   font-family: 'DM Serif Text', Georgia, serif;
   font-size: 46px; line-height: 1; letter-spacing: -0.02em;
   color: #fff; margin: 0 0 20px;
 }
-.hero--devin-v2 .ladder .big small {
+.ladder .big small {
   font-family: var(--font-sans); font-size: 15px; font-weight: 500;
   color: rgba(255,245,230,0.55);
   margin-left: 8px;
 }
-.hero--devin-v2 .lrow {
+.ladder .lrow {
   position: relative; z-index: 1;
   display: flex; justify-content: space-between; align-items: center;
   border-top: 1px solid rgba(255,255,255,0.09);
@@ -2233,20 +2236,20 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   transition: max-height .55s cubic-bezier(.22,.61,.36,1), opacity .5s ease,
               padding .55s cubic-bezier(.22,.61,.36,1), transform .5s ease, border-color .5s ease;
 }
-.hero--devin-v2 .lrow.show {
+.ladder .lrow.show {
   max-height: 60px; opacity: 1;
   padding-top: 13px; padding-bottom: 13px;
   border-top-color: rgba(255,255,255,0.09);
   transform: none;
 }
-.hero--devin-v2 .lrow.top.show { max-height: 68px; }
-.hero--devin-v2 .lrow .s { font-weight: 500; color: rgba(255,245,230,0.85); }
-.hero--devin-v2 .lrow .b { font-weight: 700; color: #f0c977; font-size: 18px; }
-.hero--devin-v2 .lrow.top .s { font-weight: 700; color: #fff; }
-.hero--devin-v2 .lrow.top .b { color: #fff; font-size: 22px; }
+.ladder .lrow.top.show { max-height: 68px; }
+.ladder .lrow .s { font-weight: 500; color: rgba(255,245,230,0.85); }
+.ladder .lrow .b { font-weight: 700; color: #f0c977; font-size: 18px; }
+.ladder .lrow.top .s { font-weight: 700; color: #fff; }
+.ladder .lrow.top .b { color: #fff; font-size: 22px; }
 /* Reduced motion: show the full table statically */
 @media (prefers-reduced-motion: reduce) {
-  .hero--devin-v2 .lrow {
+  .ladder .lrow {
     max-height: none; opacity: 1; transform: none;
     padding-top: 13px; padding-bottom: 13px;
     border-top-color: rgba(255,255,255,0.09);
@@ -2254,7 +2257,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   }
 }
 /* Gold glint that sweeps across the card (bottom-right → top-left) once the rows finish loading */
-.hero--devin-v2 .ladder::after {
+.ladder::after {
   content: ''; position: absolute; inset: 0;
   border-radius: 18px; pointer-events: none;
   z-index: 2; opacity: 0;
@@ -2265,7 +2268,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   background-position: 0% 0%;
   mix-blend-mode: screen;
 }
-.hero--devin-v2 .ladder.glint::after { animation: ladderGlint 2.4s ease-in-out 1; }
+.ladder.glint::after { animation: ladderGlint 2.4s ease-in-out 1; }
 @keyframes ladderGlint {
   0%   { background-position: 0% 0%;     opacity: 0; }
   32%  { opacity: 1; }
@@ -2289,14 +2292,17 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   .hero--devin-v2 .cta-link { margin-top: 16px; }
   .hero--devin-v2 .cta-fine { text-align: center; white-space: normal; }
   .hero--devin-v2 .limited { align-self: center; }
-  .hero--devin-v2 .ladder { justify-self: center; margin: 0 auto; }
+  .ladder { justify-self: center; margin: 0 auto; }
+  /* Mobile hero: table stays at its final height (no resize) - rows just fade in */
+  .hero--devin-v2 .ladder .lrow { max-height: none; padding-top: 13px; padding-bottom: 13px; border-top-color: rgba(255,255,255,0.09); transition: opacity .5s ease, transform .5s ease; }
+  .hero--devin-v2 .ladder .lrow.show { max-height: none; }
 }
 @media (max-width: 560px) {
   .hero--devin-v2 .grid { padding: 84px 18px 52px; }
-  .hero--devin-v2 .ladder { padding: 24px 22px 20px; }
-  .hero--devin-v2 .ladder .big { font-size: 40px; }
-  .hero--devin-v2 .lrow { font-size: 14px; }
-  .hero--devin-v2 .lrow.top .b { font-size: 20px; }
+  .ladder { padding: 24px 22px 20px; }
+  .ladder .big { font-size: 40px; }
+  .ladder .lrow { font-size: 14px; }
+  .ladder .lrow.top .b { font-size: 20px; }
 }
 </style>
 
@@ -2324,7 +2330,10 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
     <!-- RIGHT – bonus ladder table (styled like the hero cards) -->
     <div class="ladder">
       <h4>Your launch bonus</h4>
-      <div class="big">Up to $1,000<small> in cash</small></div>
+      <div class="hl-stack">
+        <div class="progress-calc"><div class="pc-bar"><div class="pc-fill"></div></div></div>
+        <div class="big">Up to $1,000<small> in cash</small></div>
+      </div>
       <div class="lrow"><span class="s">Sell $500 – $999</span><span class="b">$50</span></div>
       <div class="lrow"><span class="s">Sell $1,000 – $2,499</span><span class="b">$100</span></div>
       <div class="lrow"><span class="s">Sell $2,500 – $4,999</span><span class="b">$250</span></div>
@@ -2384,42 +2393,49 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
 </section>
 
 <script>
-/* Hero bonus table – reveal rows one by one (growing the table height), then a
-   gold glint sweeps bottom-right → top-left; hold 3s static, then repeat. */
+/* Launch-bonus ladder tables - reveal rows one by one (growing height), then a
+   gold glint sweeps bottom-right -> top-left; hold 3s, repeat. Runs per .ladder
+   when it scrolls into view (used in the hero and the bonus section). */
 ;(function(){
-  var ladder = document.querySelector('.hero--devin-v2 .ladder');
-  if(!ladder) return;
-  var rows = Array.prototype.slice.call(ladder.querySelectorAll('.lrow'));
-  if(!rows.length) return;
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduce){ rows.forEach(function(r){ r.classList.add('show'); }); return; }
-  var GAP = 500, START = 650, ROW_TRANS = 600, GLINT = 2400, HOLD = 3000;
-  var timers = [];
-  function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
-  function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
-  function cycle(){
-    clearTimers();
-    ladder.classList.remove('glint');
-    rows.forEach(function(r){ r.classList.remove('show'); });
-    rows.forEach(function(r, i){ later(function(){ r.classList.add('show'); }, START + i * GAP); });
-    var lastShown = START + (rows.length - 1) * GAP + ROW_TRANS;
-    later(function(){ ladder.classList.add('glint'); }, lastShown);
-    later(cycle, lastShown + GLINT + HOLD);
+  function initLadder(ladder){
+    var rows = Array.prototype.slice.call(ladder.querySelectorAll('.lrow'));
+    if(!rows.length) return;
+    var fill = ladder.querySelector('.pc-fill');       /* optional progress bar (bonus section) */
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){ rows.forEach(function(r){ r.classList.add('show'); }); if(fill){ fill.style.width = '100%'; } return; }
+    var GAP = 500, START = 650, ROW_TRANS = 600, GLINT = 2400, HOLD = 3000;
+    var timers = [];
+    function clearTimers(){ timers.forEach(clearTimeout); timers = []; }
+    function later(fn, ms){ timers.push(setTimeout(fn, ms)); }
+    function reset(){
+      ladder.classList.remove('glint');
+      if(fill){ fill.style.width = '0%'; }
+      rows.forEach(function(r){ r.classList.remove('show'); });
+    }
+    function cycle(){
+      clearTimers();
+      reset();
+      rows.forEach(function(r, i){ later(function(){
+        r.classList.add('show');
+        if(fill){ fill.style.width = Math.round((i + 1) / rows.length * 100) + '%'; }
+      }, START + i * GAP); });
+      var lastShown = START + (rows.length - 1) * GAP + ROW_TRANS;
+      later(function(){ ladder.classList.add('glint'); }, lastShown);
+      later(cycle, lastShown + GLINT + HOLD);
+    }
+    if('IntersectionObserver' in window){
+      var running = false;
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting && !running){ running = true; cycle(); }
+          else if(!e.isIntersecting && running){ running = false; clearTimers(); reset(); }
+        });
+      }, { threshold: 0.2 });
+      io.observe(ladder);
+    } else { cycle(); }
   }
-  if('IntersectionObserver' in window){
-    var running = false;
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(e.isIntersecting && !running){ running = true; cycle(); }
-        else if(!e.isIntersecting && running){
-          running = false; clearTimers();
-          ladder.classList.remove('glint');
-          rows.forEach(function(r){ r.classList.remove('show'); });
-        }
-      });
-    }, { threshold: 0.2 });
-    io.observe(ladder);
-  } else { cycle(); }
+  function initAll(){ document.querySelectorAll('.ladder').forEach(initLadder); }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', initAll); } else { initAll(); }
 })();
 </script>
 
@@ -3290,60 +3306,121 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
 @media(max-width:480px){ .bonus-section{padding:56px 16px} .bullet-item { gap: 10px; } }
 </style>
 
+<style>
+/* STEP 2 - dark, centered launch-bonus section: intro + ladder + note + CTA.
+   Desktop ladder = wide horizontal 2-column table (header + calculator left, tiers right).
+   Rows fade in (height reserved, so the table never resizes); the gold glint stays. */
+.bonus-section.is-bento {
+  background:
+    radial-gradient(ellipse 85% 70% at 78% 22%, rgba(150,110,50,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 75% 75% at 15% 92%, rgba(90,68,34,0.13) 0%, transparent 55%),
+    #04060e;
+}
+.bonus-section.is-bento .get-head { max-width: 760px; margin: 0 auto 40px; text-align: center; }
+.bonus-section.is-bento .bonus-pill {
+  background: rgba(40,28,14,0.55);
+  border: 1px solid rgba(232,184,115,0.30);
+  color: rgba(255,228,168,0.9);
+}
+.bonus-section.is-bento .bonus-heading { color: #fff; }
+/* Wider lead so it fits in <=3 lines down to tablet width */
+.bonus-section.is-bento .bonus-sub { color: rgba(245,225,185,0.74); font-size: 19px; max-width: 720px; margin-left: auto; margin-right: auto; }
+.bonus-section.is-bento .bonus-sub b { color: #fff; }
+.bonus-section.is-bento .ladder { margin: 0 auto; }
+
+/* Header big number on 3 lines: "Up to" / "$1,000" (large) / "in cash" */
+.bonus-section.is-bento .ladder-head .big {
+  display: flex; flex-direction: column; align-items: flex-start;
+  line-height: 1; margin-bottom: 0;
+}
+.bonus-section.is-bento .ladder-head .big-pre {
+  font-family: 'DM Serif Text', Georgia, serif; font-size: clamp(32px, 4.5vw, 44px);
+  font-weight: 400; letter-spacing: -0.02em; color: #fff; margin-bottom: 2px;
+}
+.bonus-section.is-bento .ladder-head .big-amt {
+  font-family: 'DM Serif Text', Georgia, serif;
+  font-size: clamp(48px, 7vw, 62px); line-height: 0.92; color: #fff; letter-spacing: -0.02em;
+}
+.bonus-section.is-bento .ladder-head .big small {
+  display: block; margin-left: 0; margin-top: 8px;
+  font-size: 16px; color: rgba(255,245,230,0.55);
+}
+
+/* Progress bar inside the ladder header - fills as the tier rows appear; width matches the big number. Shared by the hero and bonus ladders. */
+.ladder .hl-stack { width: fit-content; }
+.ladder .progress-calc { width: 100%; margin: 8px 0 30px; }
+.ladder .pc-bar { height: 8px; border-radius: 100px; background: rgba(255,255,255,0.08); overflow: hidden; }
+.ladder .pc-fill {
+  height: 100%; width: 0%; border-radius: 100px;
+  background: linear-gradient(90deg, #b8862e, #f0c977);
+  transition: width .5s ease;
+}
+
+/* Rows reveal by fading in only - full height reserved so the table never resizes */
+.bonus-section.is-bento .ladder .lrow {
+  max-height: none;
+  padding-top: 13px; padding-bottom: 13px;
+  border-top-color: rgba(255,255,255,0.09);
+  opacity: 0; transform: translateY(6px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.bonus-section.is-bento .ladder .lrow.show { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .bonus-section.is-bento .ladder .lrow { opacity: 1; transform: none; transition: none; }
+}
+
+/* Desktop: wide, horizontal 2-column ladder (header + calc left, tiers right) */
+@media (min-width: 900px) {
+  .bonus-section.is-bento .ladder {
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: minmax(250px, 0.95fr) minmax(0, 1.05fr);
+    column-gap: 44px;
+    align-items: stretch;
+    padding: 36px 40px;
+    text-align: left;
+  }
+  .bonus-section.is-bento .ladder-head { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+  .bonus-section.is-bento .ladder-rows { display: flex; flex-direction: column; justify-content: center; }
+  .bonus-section.is-bento .ladder-rows .lrow:first-child { border-top-color: transparent; }
+}
+.bonus-tnote {
+  max-width: 560px; margin: 22px auto 0; text-align: center;
+  font-size: 14.5px; line-height: 1.5; color: rgba(245,225,185,0.55);
+}
+/* Mobile: gap under "in cash" before the tier rows */
+@media (max-width: 899px) {
+  .bonus-section.is-bento .ladder-head { margin-bottom: 24px; }
+}
+</style>
 <section class="bonus-section is-bento" id="bonus">
   <div class="sec-in">
     <div class="get-head appear">
-      <span class="bonus-pill">STEP 2 – YOUR BONUS</span>
-      <h2 class="bonus-heading">Flexible solutions for<br>every business launch.</h2>
-      <p class="bonus-sub">Seven done-for-you assets that normally cost thousands – built to work individually, designed to work together. Yours the moment you sign up.</p>
+      <span class="bonus-pill">STEP 2 – YOUR LAUNCH BONUS</span>
+      <h2 class="bonus-heading">The more you sell,<br>the more you earn.</h2>
+      <p class="bonus-sub">Your store is free to start. As your sales grow over your first 3 months, you unlock a cash bonus – added straight to your Sellvia balance. It's <b>on top of your profit</b>: you keep 50–70% of every sale you make along the way.</p>
     </div>
-    <div class="get-grid">
-      <div class="get-card appear d1">
-        <div class="get-card-bg"></div>
-        <div class="get-icon"><span class="get-num">1</span></div>
-        <h3>Turnkey online store, ready in 60 seconds.</h3>
-        <p>A fully hosted ecommerce website with domain &amp; SSL – built, loaded with products, and live the moment you sign up.</p>
+    <div class="ladder">
+      <div class="ladder-head">
+        <h4>Your launch bonus</h4>
+        <div class="hl-stack">
+          <div class="progress-calc">
+            <div class="pc-bar"><div class="pc-fill"></div></div>
+          </div>
+          <div class="big"><span class="big-pre">Up to</span><span class="big-amt">$1,000</span><small>in cash</small></div>
+        </div>
       </div>
-      <div class="get-card appear d2">
-        <div class="get-card-bg"></div>
-        <div class="get-icon"><span class="get-num">2</span></div>
-        <h3>$100 welcome gift</h3>
-        <p>For new hot products and premium tools to grow your store.</p>
-      </div>
-      <div class="get-card appear d3">
-        <div class="get-card-bg"></div>
-        <div class="get-icon"><span class="get-num">3</span></div>
-        <h3>Amazon Seller Kit</h3>
-        <p>Setup guide, ready product feed and Seller University access to expand to Amazon.</p>
-      </div>
-      <div class="get-card appear d4">
-        <div class="get-card-bg"></div>
-        <div class="get-icon"><span class="get-num">4</span></div>
-        <h3>Premium store design</h3>
-        <p>Custom theme, polished layout, optimised for conversions on every device.</p>
-      </div>
-      <div class="get-card appear d5">
-        <div class="get-card-bg"></div>
-        <div class="get-icon"><span class="get-num">5</span></div>
-        <h3>Google promotion gift</h3>
-        <p>A free ad campaign run by our team to bring real buyers from day one.</p>
-      </div>
-      <div class="get-card appear d6">
-        <div class="get-card-bg"></div>
-        <div class="get-icon"><span class="get-num">6</span></div>
-        <h3>Personal manager</h3>
-        <p>A real human in your corner for strategy, onboarding and growth.</p>
-      </div>
-      <div class="get-card appear d6">
-        <div class="get-card-bg"></div>
-        <div class="get-icon"><span class="get-num">7</span></div>
-        <h3>1-on-1 business training, live with your coach.</h3>
-        <p>Personal coaching sessions on marketing, sales and scaling – tailored to your store and your goals. Most people pay $399+ per session for this.</p>
+      <div class="ladder-rows">
+        <div class="lrow"><span class="s">Sell $500 – $999</span><span class="b">$50</span></div>
+        <div class="lrow"><span class="s">Sell $1,000 – $2,499</span><span class="b">$100</span></div>
+        <div class="lrow"><span class="s">Sell $2,500 – $4,999</span><span class="b">$250</span></div>
+        <div class="lrow"><span class="s">Sell $5,000 – $9,999</span><span class="b">$500</span></div>
+        <div class="lrow top"><span class="s">Sell $10,000+</span><span class="b">$1,000</span></div>
       </div>
     </div>
-    <div style="text-align:center;margin-top:64px" class="appear">
-      <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled" id="bundleCtaBtn">Get my free store + VIP Bundle</a>
-      <p style="margin-top:14px;font-size:13px;color:var(--c-gray3)">Get started in less than 60 seconds • Cancel anytime</p>
+    <p class="bonus-tnote">Inspired by the rewards big banks give businesses for processing more – the bigger your numbers, the bigger your bonus. Most owners start at the lower tiers and climb from there.</p>
+    <div style="text-align:center;margin-top:32px" class="appear">
+      <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled" id="bundleCtaBtn">Start free and start earning</a>
     </div>
   </div>
 </section>
