@@ -682,56 +682,51 @@ button { cursor: pointer; font-family: var(--font); outline: none; border: none;
 
 /* ════ STAT BAR ════ */
 /* Apple-style full-width stat strip between sections */
+/* Stat strip – lives inside the hero, directly on the hero background (no separate panel) */
 .stat-bar {
-  background: #1d1d1f;
-  padding: 40px 24px;
+  background: transparent;
+  padding: 0;
 }
 .stat-bar-inner {
-  max-width: var(--max);
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 90px 28px 56px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 18px;
-  overflow: hidden;
+  gap: 0;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
 }
-@media(max-width:960px){ .stat-bar-inner { grid-template-columns: repeat(2, 1fr); } }
 .stat-item {
-  background: #1d1d1f;
-  padding: 32px 24px;
+  background: transparent;
+  padding: 8px 22px;
   text-align: center;
 }
+.stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,0.08); }
 .stat-n {
-  font-size: clamp(36px, 5vw, 56px);
+  font-size: clamp(24px, 3vw, 38px);
   font-weight: 700;
   letter-spacing: -0.03em;
   color: #fff;
   line-height: 1;
   display: block;
+  white-space: nowrap;
 }
 .stat-l {
   font-size: 14px;
-  color: var(--c-gray3);
+  color: rgba(245,225,185,0.62);
   margin-top: 8px;
   display: block;
 }
-.stat-num-row {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.18em;
-  font-size: clamp(36px, 5vw, 56px);
-  line-height: 1;
+@media(max-width:960px){
+  .stat-bar-inner { grid-template-columns: repeat(2, 1fr); row-gap: 26px; }
+  .stat-item:nth-child(odd) { border-left: none; }
 }
-.stat-num-row .stat-n { font-size: inherit; display: inline; }
-.stat-icon {
-  width: calc(1em - 4px);
-  height: calc(1em - 4px);
-  flex-shrink: 0;
-  color: #fff;
+@media(max-width:600px){
+  .stat-bar-inner { grid-template-columns: 1fr; row-gap: 22px; }
+  .stat-item { border-left: none; }
 }
-@media(max-width:600px){ .stat-bar-inner { grid-template-columns:1fr; } .stat-bar { padding: 56px 16px; } }
 
 /* ════ SECTIONS ════ */
 section { padding: 120px 24px; }
@@ -2100,7 +2095,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   max-width: 1280px; margin: 0 auto;
-  padding: 76px 28px 68px; gap: 48px; align-items: center;
+  padding: 76px 28px 0; gap: 48px; align-items: center;
 }
 
 /* LEFT – copy */
@@ -2337,6 +2332,55 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
       <div class="lrow top"><span class="s">Sell $10,000+</span><span class="b">$1,000</span></div>
     </div>
   </div>
+  <!-- Stat strip (sits on the hero background) -->
+  <div class="stat-bar">
+    <div class="stat-bar-inner">
+      <div class="stat-item">
+        <span class="stat-n"
+              data-countup
+              data-prefix="Up to $"
+              data-suffix=""
+              data-from="0"
+              data-to="1000"
+              data-decimals="0"
+              data-duration="1800">Up to $1,000</span>
+        <span class="stat-l">launch bonus</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-n"
+              data-countup
+              data-prefix=""
+              data-suffix="+"
+              data-from="700"
+              data-to="1500000"
+              data-decimals="0"
+              data-duration="1800">1,500,000+</span>
+        <span class="stat-l">stores launched</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-n"
+              data-countup
+              data-prefix="$"
+              data-suffix="B+"
+              data-from="0"
+              data-to="1.5"
+              data-decimals="1"
+              data-duration="1800">$1.5B+</span>
+        <span class="stat-l">earned by owners</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-n"
+              data-countup
+              data-prefix=""
+              data-suffix="★"
+              data-from="0"
+              data-to="4.8"
+              data-decimals="1"
+              data-duration="1800">4.8★</span>
+        <span class="stat-l">average rating</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -2379,75 +2423,108 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
 })();
 </script>
 
-<!-- ═══ STAT BAR ═══ -->
-<div class="stat-bar">
-  <div class="stat-bar-inner">
-    <div class="stat-item">
-      <span class="stat-num-row">
-        <span class="stat-n"
-              data-countup
-              data-prefix=""
-              data-suffix=""
-              data-from="1"
-              data-to="7"
-              data-decimals="0"
-              data-duration="1800">7</span>
-        <svg class="stat-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M5.3182 2.5H18.6818L22.5 9.15L12 21.5L1.5 9.15L5.3182 2.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M5.31812 2.5L12 21.5L18.6818 2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M1.5 9.15002H22.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M7.70459 9.15L12 2.5L16.2955 9.15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- ═══ BENEFIT STRIP ═══ -->
+<style>
+.benefit-strip { background: #f5f5f7; padding: 120px 24px 0; }
+.benefit-strip .benefits {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.benefit-strip .benefit { display: flex; gap: 14px; align-items: flex-start; }
+.benefit-strip .bi {
+  flex: none;
+  width: 48px; height: 48px;
+  border-radius: 13px;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.benefit-strip .bi svg { width: 24px; height: 24px; display: block; }
+.benefit-strip h4 {
+  font-family: var(--font);
+  font-size: 15.5px; font-weight: 600;
+  color: var(--c-near); letter-spacing: -0.01em;
+  margin: 0 0 3px;
+}
+.benefit-strip p {
+  font-family: var(--font);
+  font-size: 13.5px; color: var(--c-gray2);
+  line-height: 1.5; margin: 0;
+}
+@media(max-width:860px){
+  .benefit-strip { padding: 48px 24px; }
+  .benefit-strip .benefits { grid-template-columns: 1fr; gap: 22px; max-width: 460px; }
+}
+</style>
+<section class="benefit-strip">
+  <div class="benefits">
+    <div class="benefit">
+      <div class="bi">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.5 13.75C9.5 14.72 10.25 15.5 11.17 15.5H13.05C13.85 15.5 14.5 14.82 14.5 13.97C14.5 13.06 14.1 12.73 13.51 12.52L10.5 11.47C9.91 11.26 9.51001 10.94 9.51001 10.02C9.51001 9.17999 10.16 8.48999 10.96 8.48999H12.84C13.76 8.48999 14.51 9.26999 14.51 10.24" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 7.5V16.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17 3V7H21" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 2L17 7" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </span>
-      <span class="stat-l">Assets in your Premium Bundle</span>
+      </div>
+      <div>
+        <h4>Fast payouts to your account</h4>
+        <p>Bonuses are credited straight to your Sellvia balance.</p>
+      </div>
     </div>
-    <div class="stat-item">
-      <span class="stat-n"
-            data-countup
-            data-prefix=""
-            data-suffix="+"
-            data-from="700"
-            data-to="1500000"
-            data-decimals="0"
-            data-duration="1800">1,500,000+</span>
-      <span class="stat-l">Stores launched worldwide</span>
+    <div class="benefit">
+      <div class="bi">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 18.86H17.24C16.44 18.86 15.68 19.17 15.12 19.73L13.41 21.42C12.63 22.19 11.36 22.19 10.58 21.42L8.87 19.73C8.31 19.17 7.54 18.86 6.75 18.86H6C4.34 18.86 3 17.53 3 15.89V4.97998C3 3.33998 4.34 2.01001 6 2.01001H18C19.66 2.01001 21 3.33998 21 4.97998V15.89C21 17.52 19.66 18.86 18 18.86Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 9.16003C7 8.23003 7.76 7.46997 8.69 7.46997C9.62 7.46997 10.38 8.23003 10.38 9.16003C10.38 11.04 7.71 11.24 7.12 13.03C7 13.4 7.31 13.77 7.7 13.77H10.38" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16.04 13.76V8.05003C16.04 7.79003 15.87 7.55997 15.62 7.48997C15.37 7.41997 15.1 7.51997 14.96 7.73997C14.24 8.89997 13.46 10.22 12.78 11.38C12.67 11.57 12.67 11.82 12.78 12.01C12.89 12.2 13.1 12.3199 13.33 12.3199H17" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Real human support</h4>
+        <p>A personal manager and 24/7 team, not a bot.</p>
+      </div>
     </div>
-    <div class="stat-item">
-      <span class="stat-n"
-            data-countup
-            data-prefix="$"
-            data-suffix="B+"
-            data-from="0"
-            data-to="1.5"
-            data-decimals="1"
-            data-duration="1800">$1.5B+</span>
-      <span class="stat-l">Earned by store owners</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-n"
-            data-countup
-            data-prefix=""
-            data-suffix="★"
-            data-from="0"
-            data-to="4.8"
-            data-decimals="1"
-            data-duration="1800">4.8★</span>
-      <span class="stat-l">Average customer rating</span>
+    <div class="benefit">
+      <div class="bi">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.74 17.75H17.66C17.57 17.83 17.48 17.9 17.39 17.98L13.12 21.18C11.71 22.23 9.41001 22.23 7.99001 21.18L3.71001 17.98C2.77001 17.28 2 15.73 2 14.56V7.14998C2 5.92998 2.93001 4.57998 4.07001 4.14998L9.05 2.27999C9.87 1.96999 11.23 1.96999 12.05 2.27999L17.02 4.14998C17.97 4.50998 18.78 5.50999 19.03 6.52999H11.73C11.51 6.52999 11.31 6.54 11.12 6.54C9.27 6.65 8.78999 7.31998 8.78999 9.42998V14.86C8.79999 17.16 9.39001 17.75 11.74 17.75Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8.7998 11.22H21.9998" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M21.9998 9.42001V14.97C21.9798 17.19 21.3698 17.74 19.0598 17.74H11.7398C9.38981 17.74 8.7998 17.15 8.7998 14.84V9.41C8.7998 7.31 9.27981 6.63999 11.1298 6.51999C11.3198 6.51999 11.5198 6.51001 11.7398 6.51001H19.0598C21.4098 6.52001 21.9998 7.10001 21.9998 9.42001Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M11.3198 15.26H12.6498" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14.75 15.26H18.02" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Secure payments built in</h4>
+        <p>Encrypted checkout accepting all major cards.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
+
 <!-- ═══ FREEBASIC ═══ -->
 <style>
 .freebasic-section {
   background: #f5f5f7;
   padding: 120px 24px;
   width: 100%;
+  overflow: hidden;        /* clip floating cards that intentionally hang past the phone mockup */
 }
 @media(max-width:1200px){ .freebasic-section{padding:100px 24px} }
 @media(max-width:860px){
   .freebasic-section{padding:72px 24px}
   .freebasic-inner{grid-template-columns:1fr;gap:48px}
-  .freebasic-inner .bonus-right { order: -1; }
+  .freebasic-inner .bonus-left { order: -1; }   /* text + CTA on top, image goes under the button */
+}
+@media(max-width:600px){
+  /* Disable the forced line break in the heading – let the text wrap
+     naturally so the H2 stays at two lines instead of three. */
+  .freebasic-section .bonus-heading .br-desktop { display: none; }
 }
 @media(max-width:480px){ .freebasic-section{padding:56px 16px} }
 /* Clean bullet list (no separator lines / no active indicator / no right-arrow) */
@@ -2524,8 +2601,11 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   /* Image native ratio 1535:3853 → at 280px wide ≈ 703px tall.
      Phone screen is 604px → scroll range ≈ -100px. */
   animation: pvScreenScroll 18s ease-in-out 0.6s infinite;
+  animation-play-state: paused;
   will-change: transform;
 }
+/* auto-scroll loop starts only once the section is scrolled into view */
+.freebasic-section.pv-in-view .pv-screen-img { animation-play-state: running; }
 @keyframes pvScreenScroll {
   0%,   8%   { transform: translateY(0); }                                    /* hold at top */
   50%, 58%   { transform: translateY(calc(-100% + var(--pv-phone-h, 604px))); } /* hold at bottom */
@@ -2709,6 +2789,12 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   /* Tighten the stage to the actual content (phone + overflowing cards) */
   .freebasic-section .bonus-right.pv-stage { min-height: 510px; }
 }
+@media (max-width: 480px) {
+  /* On narrowest phones (320-414px) keep cards inside the section gutter:
+     reduce offsets and slightly narrow the cards so nothing clips out of view. */
+  .freebasic-section .pv-stat-new   { right: -10px; width: 160px; }
+  .freebasic-section .pv-stat-today { left: -10px;  width: 180px; }
+}
 .freebasic-section .pv-float-card-top {
   display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
 }
@@ -2758,130 +2844,141 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   .freebasic-section .pv-fc-4 { left:  -10px; }
 }
 
-/* ── Community composition (8 avatars + center woman + 2 floating graphic cards) ── */
-.composition-stage {
-  position: relative;
-  width: calc(100% + 60px);
-  max-width: 640px;
-  aspect-ratio: 1 / 1;
-  margin: 0 auto 0 -40px;
-}
-.comp-avatar {
-  position: absolute;
-  border-radius: 50%;
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-  will-change: transform;
-  z-index: 2;
-}
-.comp-woman {
-  position: absolute;
-  border-radius: 28px;
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
-  z-index: 1;
-}
-.comp-graphic {
-  position: absolute;
-  z-index: 3;
-  border-radius: 12px;
-  will-change: transform;
-}
-
-/* Avatar layout (matches reference 7389 trail) */
-.comp-p1 { top: calc(8% - 7px);  left: 9%;   width: 17%;   z-index: 0;  animation: compPulse 4.2s ease-in-out 0s     infinite; }
-.comp-p2 { top: 4%;              left: 44%;  width: 10%;   animation: compPulse 5.1s ease-in-out -1s    infinite; }
-.comp-p3 { top: calc(10% - 7px); left: 67%;  width: 13%;   z-index: 0;  animation: compPulse 4.6s ease-in-out -2s    infinite; }
-.comp-p4 { top: 38%;             left: 4%;   width: 8%;    animation: compPulse 4.8s ease-in-out -1.5s  infinite; }
-.comp-p5 { top: 52%;             left: 80%;  width: 11%;   animation: compPulse 4.4s ease-in-out -2.5s  infinite; }
-.comp-p7 { top: 76%;             left: 64%;  width: 14%;   z-index: 0;  animation: compPulse 4.7s ease-in-out -3s   infinite; }
-.comp-p8 { top: 80%;             left: 26%;  width: 11%;   animation: compPulse 5.0s ease-in-out -1.7s  infinite; }
-
-/* Center woman – larger, like reference 7390 */
-.comp-woman { top: 16%; left: 21%; width: 58%; }
-
-/* Side floating graphic cards – pushed out to the stage edges */
-.comp-grafic1 { top: 56%; left: 0%;  width: 32%; animation: compFloat 6s ease-in-out -1s infinite; }
-.comp-grafic2 { top: calc(22% + 20px); right: 0%; width: 30%; animation: compFloat 7s ease-in-out -3s infinite; }
-
-/* Out-of-focus avatars – everyone except the woman + foreground graphics gets a soft blur */
-.comp-p1, .comp-p2, .comp-p3, .comp-p4, .comp-p5, .comp-p7, .comp-p8 {
-  filter: blur(4px);
-}
-
-@keyframes compPulse {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.07); }
-}
-@keyframes compFloat {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .comp-avatar, .comp-graphic { animation: none; }
-}
-
-@media(max-width:860px){
-  .composition-stage { width: 100%; max-width: 480px; margin: 0 auto; }
+/* Mobile: cap image corners at ≤20px radius (floating stat shots, award cards, get-list panel) */
+@media (max-width: 768px) {
+  .get-list,
+  .award-card,
+  .freebasic-section .pv-stat-new,
+  .freebasic-section .pv-stat-today { border-radius: 20px; }
 }
 </style>
 
 <section class="freebasic-section" id="freebasic">
   <div class="bonus-inner freebasic-inner">
 
-    <!-- LEFT – community composition: 8 customer avatars around a centered woman + two floating graphic cards -->
-    <div class="bonus-right composition-stage" aria-label="Customers happy with their stores">
-      <img class="comp-woman"                src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/woman.webp"   alt="" loading="lazy">
-      <img class="comp-graphic comp-grafic1" src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/grafic1.webp" alt="" loading="lazy">
-      <img class="comp-graphic comp-grafic2" src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/grafic2.webp" alt="" loading="lazy">
-      <img class="comp-avatar comp-p1" src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/p1_2x.webp" alt="" loading="lazy">
-      <img class="comp-avatar comp-p2" src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/p2_2x.webp" alt="" loading="lazy">
-      <img class="comp-avatar comp-p3" src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/p3_2x.webp" alt="" loading="lazy">
-      <img class="comp-avatar comp-p4" src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/p4_2x.webp" alt="" loading="lazy">
-      <img class="comp-avatar comp-p5" src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/p5_2x.webp" alt="" loading="lazy">
-      <img class="comp-avatar comp-p7" src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/p7_2x.webp" alt="" loading="lazy">
-      <img class="comp-avatar comp-p8" src="https://sellvia.com/images-for-landings/premium-business-bundle/freebasic/p8_2x.webp" alt="" loading="lazy">
+    <!-- LEFT – phone mockup with editable HTML cards (vector, no raster) -->
+    <div class="bonus-right pv-stage" aria-label="Store visual">
+      <div class="pv-phone-wrap">
+
+        <!-- Stat overlays on top of phone -->
+        <img class="pv-stat pv-stat-new"   src="https://sellvia.com/images-for-landings/free-ecommerce-store-plus-amazon-package/freebasic/New%20order.webp"      alt="New order received" width="640" height="196" loading="lazy">
+        <picture>
+          <source media="(max-width: 768px)" srcset="https://sellvia.com/images-for-landings/free-ecommerce-store-plus-amazon-package/freebasic/Today's%20Orders_m.webp">
+          <img class="pv-stat pv-stat-today" src="https://sellvia.com/images-for-landings/free-ecommerce-store-plus-amazon-package/freebasic/Today's%20Orders.webp" alt="Today's orders summary" width="700" height="937" loading="lazy">
+        </picture>
+
+        <!-- Top-right floating card: revenue (Figma: dollar-circle) -->
+        <div class="pv-float-card pv-fc-1">
+          <div class="pv-float-card-top">
+            <span class="pv-float-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M8.67188 14.3298C8.67188 15.6198 9.66188 16.6598 10.8919 16.6598H13.4019C14.4719 16.6598 15.3419 15.7498 15.3419 14.6298C15.3419 13.4098 14.8119 12.9798 14.0219 12.6998L9.99187 11.2998C9.20187 11.0198 8.67188 10.5898 8.67188 9.36984C8.67188 8.24984 9.54187 7.33984 10.6119 7.33984H13.1219C14.3519 7.33984 15.3419 8.37984 15.3419 9.66984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 6V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="pv-float-card-badge">↑ 18%</span>
+          </div>
+          <div class="pv-float-card-val">$4,340</div>
+          <div class="pv-float-card-label">Monthly revenue</div>
+        </div>
+
+        <!-- Bottom-left floating card: store rating (Figma: star) -->
+        <div class="pv-float-card pv-fc-2">
+          <div class="pv-float-card-top">
+            <span class="pv-float-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M15.39 5.21L16.8 8.02999C16.99 8.41999 17.5 8.78999 17.93 8.86999L20.48 9.28999C22.11 9.55999 22.49 10.74 21.32 11.92L19.33 13.91C19 14.24 18.81 14.89 18.92 15.36L19.49 17.82C19.94 19.76 18.9 20.52 17.19 19.5L14.8 18.08C14.37 17.82 13.65 17.82 13.22 18.08L10.83 19.5C9.12 20.51 8.08001 19.76 8.53001 17.82L9.10002 15.36C9.21002 14.9 9.02001 14.25 8.69001 13.91L6.70002 11.92C5.53002 10.75 5.91002 9.56999 7.54002 9.28999L10.09 8.86999C10.52 8.79999 11.03 8.41999 11.22 8.02999L12.63 5.21C13.38 3.68 14.62 3.68 15.39 5.21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 5H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 19H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 12H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="pv-float-card-badge">Top rated</span>
+          </div>
+          <div class="pv-float-card-val">4.9</div>
+          <div class="pv-float-card-label">Store rating</div>
+        </div>
+
+        <!-- Mid-left floating card: orders (Figma: box) -->
+        <div class="pv-float-card pv-fc-3">
+          <div class="pv-float-card-top">
+            <span class="pv-float-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3.17001 7.44L12 12.55L20.77 7.46997" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 21.61V12.54" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9.92999 2.48L4.59 5.45003C3.38 6.12003 2.39001 7.80001 2.39001 9.18001V14.83C2.39001 16.21 3.38 17.89 4.59 18.56L9.92999 21.53C11.07 22.16 12.94 22.16 14.08 21.53L19.42 18.56C20.63 17.89 21.62 16.21 21.62 14.83V9.18001C21.62 7.80001 20.63 6.12003 19.42 5.45003L14.08 2.48C12.93 1.84 11.07 1.84 9.92999 2.48Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17 13.24V9.58002L7.51001 4.09998" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="pv-float-card-badge">↑ 24%</span>
+          </div>
+          <div class="pv-float-card-val">187</div>
+          <div class="pv-float-card-label">Orders this month</div>
+        </div>
+
+        <!-- Phone -->
+        <div class="pv-phone">
+          <div class="pv-phone-screen">
+            <img class="pv-screen-img" src="https://sellvia.com/images-for-landings/free-online-store-plus-sales-on-autopilot/freebasic/screen2.webp" alt="Mobile store screen" width="1200" height="3011" loading="lazy">
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <!-- RIGHT (text) -->
     <div class="bonus-left">
       <span class="bonus-pill">STEP 1 – YOUR STORE</span>
-      <h2 class="bonus-heading">Your own ecommerce site,<br>ready to sell.</h2>
-      <p class="bonus-sub">A complete done-for-you online store – custom domain, mobile-ready design, payment system, and 100+ best-selling products already inside. Yours from day one, no setup needed.</p>
+      <h2 class="bonus-heading">Your own online store, <br class="br-desktop">ready to sell.</h2>
       <ul class="bullets">
         <li class="bullet-item">
           <svg class="bullet-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M7.75 12L10.58 14.83L16.25 9.17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="bullet-text">Your own website with custom domain</span>
+          <span class="bullet-text">Your own website with a custom domain</span>
         </li>
         <li class="bullet-item">
           <svg class="bullet-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M7.75 12L10.58 14.83L16.25 9.17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="bullet-text">Personal manager to guide your launch</span>
+          <span class="bullet-text">100+ best-selling products already inside</span>
         </li>
         <li class="bullet-item">
           <svg class="bullet-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M7.75 12L10.58 14.83L16.25 9.17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="bullet-text">100+ digital products ready to sell</span>
+          <span class="bullet-text">Payments, design, and hosting set up for you</span>
         </li>
         <li class="bullet-item">
           <svg class="bullet-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M7.75 12L10.58 14.83L16.25 9.17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="bullet-text">Step-by-step setup guidance included</span>
+          <span class="bullet-text">A personal manager to guide your launch</span>
         </li>
       </ul>
-      <div class="cta-wrap"><a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled">Get my free store + VIP Bundle</a></div>
+      <div class="cta-wrap"><a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled">Claim my free store</a></div>
     </div>
 
   </div>
 </section>
+
+<script>
+/* FREEBASIC store screen auto-scroll: start only when the section enters view */
+;(function () {
+  var fb = document.querySelector('.freebasic-section');
+  if (!fb) return;
+  var fbObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        fb.classList.add('pv-in-view');
+        fbObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+  fbObserver.observe(fb);
+})();
+</script>
 
 <!-- ═══ BONUS ═══ -->
 <style>
