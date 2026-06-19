@@ -1,0 +1,23 @@
+/* Variant 2 styles. Paste into index.html main hero <style> (before </style>). */
+/* Duplicated nav above hero variant 2 sits in normal flow (not sticky) */
+.nav--static { position: static; }
+
+/* ── HERO VARIANT 2: centered copy + stat-bar + bonus ladder under the CTA ── */
+.hero--v2 .grid { grid-template-columns: 1fr; max-width: 900px; padding: 88px 24px 0; }
+.hero--v2 .copy { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero--v2 .limited { align-self: center; }
+.hero--v2 .lede { max-width: 620px; }
+.hero--v2 .actions { justify-content: center; }
+.hero--v2 .cta-fine { text-align: center; white-space: normal; }
+/* v2 stat-bar inherits the hero's full width (1280) so element spacing matches variant 1; only the top gap differs */
+.hero--v2 .stat-bar-inner { padding-top: 80px; }
+.hero--v2 .cta-link { margin-top: 30px; }
+/* the ladder host borrows the bonus-section ladder styling; strip its section bg/padding */
+.hero--devin-v2.hero--v2 .v2-ladder-host { background: none; padding: 0; width: 100%; margin-top: 18px; overflow: visible; }
+/* badge pokes out the table's top-RIGHT corner (mirrored offsets) */
+.hero--devin-v2.hero--v2 .v2-ladder-host .ladder .bonus-badge { top: -26px; right: -20px; left: auto; transform: rotate(8deg) scale(0.85); }
+@media (max-width: 560px) {
+  .hero--v2 .grid { padding: 56px 18px 0; }
+  .hero--devin-v2.hero--v2 .v2-ladder-host { margin-top: 38px; }   /* table 20px lower than desktop's 18px */
+  .hero--v2 .stat-bar-inner { padding-top: 40px; }
+}
