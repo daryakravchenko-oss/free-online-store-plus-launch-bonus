@@ -724,8 +724,11 @@ button { cursor: pointer; font-family: var(--font); outline: none; border: none;
   .stat-item:nth-child(odd) { border-left: none; }
 }
 @media(max-width:600px){
-  .stat-bar-inner { grid-template-columns: 1fr; row-gap: 22px; }
-  .stat-item { border-left: none; }
+  /* keep 2x2; vertical divider only between the two columns (odd=left has none,
+     even=right keeps the border from the .stat-item + .stat-item rule) */
+  .stat-bar-inner { grid-template-columns: repeat(2, 1fr); row-gap: 30px; padding: 40px 14px 40px; }
+  .stat-item { padding: 8px 8px; }
+  .stat-n { font-size: clamp(20px, 5.5vw, 26px); }
 }
 
 /* ════ SECTIONS ════ */
@@ -1648,18 +1651,24 @@ section { padding: 120px 24px; }
 }
 .final-aurora .final-orb {
   position: absolute; top: 50%;
-  width: clamp(440px, 52vw, 800px); aspect-ratio: 1 / 1;
+  width: clamp(528px, 62vw, 960px); aspect-ratio: 1 / 1;
   border-radius: 50%;
   mix-blend-mode: screen; will-change: transform, opacity;
-  background: radial-gradient(circle at center, #ffd576 0%, rgba(240,201,119,0.5) 34%, rgba(212,160,74,0) 70%);
+  background: radial-gradient(circle at center, #3a5fd0 0%, rgba(40,62,140,0.5) 34%, rgba(16,26,72,0) 70%);
   transform: translate(var(--tx), -50%);
-  animation: finalOrbBreath 7s ease-in-out infinite;
+  animation: finalOrbBreath 4s ease-in-out infinite;
 }
 .final-aurora .final-orb-l { left: 0;  --tx: -50%; }
 .final-aurora .final-orb-r { right: 0; --tx: 50%; }
+/* Steady, symmetric pulse - both orbs share it with no delay, so they stay in sync */
 @keyframes finalOrbBreath {
-  0%, 100% { transform: translate(var(--tx), -50%) scale(0.9);  opacity: 0.72; }
-  50%      { transform: translate(var(--tx), -50%) scale(1.12); opacity: 1; }
+  0%, 100% { transform: translate(var(--tx), -50%) scale(0.92); opacity: 0.5; }
+  50%      { transform: translate(var(--tx), -50%) scale(1.15); opacity: 1; }
+}
+/* Mobile: a single orb at the top, half-visible from the top edge */
+@media (max-width: 600px) {
+  .final-aurora .final-orb-r { display: none; }
+  .final-aurora .final-orb-l { top: 0; left: 50%; --tx: -50%; width: clamp(380px, 115vw, 640px); }
 }
 @media (prefers-reduced-motion: reduce) {
   .final-aurora .final-orb { animation: none; transform: translate(var(--tx), -50%); }
@@ -1691,7 +1700,7 @@ section { padding: 120px 24px; }
   letter-spacing: -0.01em;
 }
 .final-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.final-fine { font-size: 13px; color: rgba(255,255,255,0.25); margin-top: 24px; }
+.final-fine { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 24px; }
 .final-cta-link {
   display: inline-flex;
   align-items: center;
@@ -1785,6 +1794,10 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
 @media(max-width:740px) {
   .footer-top { grid-template-columns: 1fr; gap: 40px; }
   .footer-cols { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:600px) {
+  /* leave room so the fixed sticky CTA never covers the footer text */
+  footer { padding-bottom: 96px; }
 }
 
 /* ════ STICKY CTA (all screens) ════ */
@@ -2214,8 +2227,8 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
 .ladder .bonus-badge .bb-up { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
 .ladder .bonus-badge .bb-amt { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin: 2px 0; }
 .ladder .bonus-badge .bb-lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-.hero--devin-v2 .ladder .bonus-badge { top: -8px; right: -8px; transform: rotate(8deg); }
-.bonus-section.is-bento .ladder .bonus-badge { top: -28px; left: -8px; transform: rotate(-8deg) scale(0.85); }
+.hero--devin-v2 .ladder .bonus-badge { top: -18px; right: -8px; transform: rotate(8deg); }
+.bonus-section.is-bento .ladder .bonus-badge { top: -28px; left: 7px; transform: rotate(-8deg) scale(0.85); }
 .ladder .lrow {
   position: relative; z-index: 1;
   display: flex; justify-content: space-between; align-items: center;
@@ -2292,7 +2305,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   .hero--devin-v2 .ladder .lrow.show { max-height: none; }
 }
 @media (max-width: 560px) {
-  .hero--devin-v2 .grid { padding: 84px 18px 52px; }
+  .hero--devin-v2 .grid { padding: 54px 18px 52px; }
   .ladder { padding: 24px 22px 20px; }
   .ladder .big { font-size: 40px; }
   .ladder .lrow { font-size: 14px; }
@@ -3321,7 +3334,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   border: 1px solid rgba(232,184,115,0.30);
   color: rgba(255,228,168,0.9);
 }
-.bonus-section.is-bento .bonus-heading { color: #fff; }
+.bonus-section.is-bento .bonus-heading { color: #fff; margin-left: auto; margin-right: auto; text-align: center; }
 /* Wider lead so it fits in <=3 lines down to tablet width */
 .bonus-section.is-bento .bonus-sub { color: rgba(245,225,185,0.74); font-size: 19px; max-width: 720px; margin-left: auto; margin-right: auto; }
 .bonus-section.is-bento .bonus-sub b { color: #fff; }
@@ -4070,13 +4083,13 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
     <div class="final-btns appear d2">
       <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled">Get my free store + Bonus</a>
     </div>
-    <p class="final-fine appear d3">Get started in less than 60 seconds • Cancel anytime</p>
-    <button type="button" onclick="SellviaChat.open()" class="final-cta-link appear d4">
-      Get free consultation
+    <p class="final-fine appear d3">Get started in less than 60 seconds • $40 ad coupon included • Cancel anytime</p>
+    <a href="#bonus" class="final-cta-link appear d4">
+      See how the bonus works
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M8.91 19.92l6.52-6.52c.77-.77.77-2.03 0-2.8L8.91 4.08" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-    </button>
+    </a>
   </div>
 </section>
 
