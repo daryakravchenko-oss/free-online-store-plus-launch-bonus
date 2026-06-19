@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Online Store + 7-in-1 Premium Business Bundle – Sellvia</title>
-<meta name="description" content="Claim a ready-made online store plus a $2,599 Premium Business Bundle – 7 done-for-you assets to launch and grow your business. Free 14-day trial.">
+<title>Free Online Store + Up to $1,000 Launch Bonus – Sellvia</title>
+<meta name="description" content="Claim a free, ready-made online store and earn up to $1,000 in launch bonuses as your sales grow over your first 3 months. Free 14-day trial.">
 
 <!-- SF Pro Display webfont -->
 <link rel="preload" as="style" href="https://sellvia.com/wp-content/themes/sellvia/fonts/SFProDisplay/style.min.css">
@@ -944,7 +944,7 @@ section { padding: 120px 24px; }
   .how-step + .how-step { border-left: none; border-top: 1px solid rgba(0,0,0,0.06); }
 }
 
-/* ════ SECTION 4: BONUS – Stripe-style modular bento (light, 7-in-1 Premium Bundle) ════ */
+/* ════ SECTION 4: BONUS – Stripe-style modular bento (launch bonus ladder) ════ */
 /* Selectors target #bonus / .bonus-section. The legacy reference rule for
    .bonus-section (background + padding) above is harmless – both rules merge cleanly. */
 .bonus-section.is-bento {
@@ -2238,7 +2238,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
 .ladder .bonus-badge .bb-amt { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; margin: 2px 0; }
 .ladder .bonus-badge .bb-lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 .hero--devin-v2 .ladder .bonus-badge { top: -8px; right: -8px; transform: rotate(8deg); }
-.bonus-section.is-bento .ladder .bonus-badge { top: -8px; left: -8px; transform: rotate(-8deg); }
+.bonus-section.is-bento .ladder .bonus-badge { top: -28px; left: -8px; transform: rotate(-8deg) scale(0.85); }
 .ladder .lrow {
   position: relative; z-index: 1;
   display: flex; justify-content: space-between; align-items: center;
@@ -3447,7 +3447,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
 </section>
 
 <script>
-/* ── Bonus / Premium Bundle – legacy panel-switching is no-op for the bento layout ── */
+/* ── Bonus – legacy panel-switching is no-op for the bento layout ── */
 ;(function() {
 
   /* Brownian motion script kept for any data-brownian elements elsewhere on the page.
@@ -3500,7 +3500,6 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
     <div class="appear" style="text-align:center">
       <div class="sec-label">How it works</div>
       <h2 class="sec-title-xl on-light">From zero to your first bonus,<br>in 3 steps.</h2>
-      <p class="sec-body" style="max-width:540px;margin:0 auto">No experience, no tech skills, no inventory needed.</p>
     </div>
     <div class="how-steps">
       <div class="how-step appear d1">
@@ -3524,103 +3523,6 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
     </div>
   </div>
 </section>
-
-<!-- ═══ STORE DESIGNS MARQUEE ═══ -->
-<style>
-.store-sec { background: #000; padding: 120px 0; overflow: hidden; }
-@media(max-width:1200px) { .store-sec { padding: 100px 0; } }
-@media(max-width:860px)  { .store-sec { padding: 72px 0; } }
-@media(max-width:480px)  { .store-sec { padding: 56px 0; } }
-.store-sec-head { text-align: center; padding: 0 24px; margin-bottom: 60px; }
-
-/* Horizontal infinite marquee – Wix Studio style */
-.store-marquee {
-  position: relative;
-  overflow: clip;
-  overflow-clip-margin: 20px;
-  padding: 20px 0;
-  margin: -20px 0;
-}
-.store-marquee::before,
-.store-marquee::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 120px;
-  z-index: 2;
-  pointer-events: none;
-}
-.store-marquee::before { left: 0; background: linear-gradient(to right, #000, transparent); }
-.store-marquee::after  { right: 0; background: linear-gradient(to left, #000, transparent); }
-
-.store-strip {
-  display: flex;
-  gap: 20px;
-  width: max-content;
-  cursor: grab;
-  user-select: none;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.store-strip.dragging { cursor: grabbing; }
-
-.store-card {
-  flex-shrink: 0;
-  width: 720px;
-  aspect-ratio: 1376/898;     /* matches new store screenshots – taller than the previous 16/9 */
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-  transform: translateZ(0);
-  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.store-strip.is-paused .store-card:hover { transform: scale(1.03); }
-.store-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-
-.store-sec .store-cta { text-align: center; margin-top: 56px; }
-
-@media(max-width:760px) {
-  .store-card { width: 510px; }
-  .store-strip { gap: 14px; }
-  .store-marquee::before, .store-marquee::after { width: 60px; }
-}
-@media(max-width:480px) {
-  /* Card scales with viewport so it fits 320 (≈260px), 375 (≈305px), 390 (≈317px) */
-  .store-card { width: clamp(260px, 81vw, 420px); border-radius: 10px; }
-  .store-marquee::before, .store-marquee::after { width: 40px; }
-}
-</style>
-<div class="store-sec" id="stores">
-  <div class="store-sec-head">
-    <div style="font-size:12px;font-weight:600;color:var(--c-amber);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:16px" class="appear">Your store interface</div>
-    <div style="font-size:clamp(32px,5vw,52px);font-weight:700;color:#fff;letter-spacing:-0.03em;margin-bottom:16px;max-width:700px;margin-left:auto;margin-right:auto" class="appear d1">
-      What will my store look like?
-    </div>
-    <div style="font-size:19px;color:rgba(255,255,255,0.55);line-height:1.5;max-width:500px;margin-left:auto;margin-right:auto" class="appear d2">
-      Enjoy a professionally designed website that grabs attention and look perfect on any device!
-    </div>
-  </div>
-
-  <div class="store-static appear-scale d2" style="padding:0 24px">
-    <picture>
-      <source media="(max-width:600px)" srcset="https://sellvia.com/images-for-landings/premium-business-bundle/stores/Goya_picture_m.webp" width="360" height="306">
-      <img src="https://sellvia.com/images-for-landings/premium-business-bundle/stores/Goya_picture.webp" alt="Store interface example" width="980" height="445" style="display:block;width:100%;max-width:var(--max);height:auto;margin:0 auto;box-shadow:0 8px 40px rgba(0,0,0,0.5)">
-    </picture>
-  </div>
-
-  <div class="store-cta appear d3">
-    <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled">Get my free store + VIP Bundle</a>
-  </div>
-</div>
-
 
 <!-- ═══ INCLUDED – What do I get for free ═══ -->
 <style>
@@ -3708,37 +3610,36 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
       <div class="get-tile appear d1">
         <div class="get-tile-icon"><img src="https://sellvia.com/images-for-landings/premium-business-bundle/icons/shop.svg" alt="store" loading="lazy"></div>
         <h3>Top-notch online store</h3>
-        <p>A fully hosted standalone ecommerce website, domain name &amp; SSL included.</p>
+        <p>A fully hosted standalone website, domain name &amp; SSL included.</p>
       </div>
       <div class="get-tile appear d2">
         <div class="get-tile-icon"><img src="https://sellvia.com/images-for-landings/premium-business-bundle/icons/designtools.svg" alt="design" loading="lazy"></div>
         <h3>Professional design</h3>
-        <p>Switchable, mobile-friendly design with vibrant visuals that turn shoppers into buyers.</p>
+        <p>Switchable, mobile-friendly design that turns shoppers into buyers.</p>
       </div>
       <div class="get-tile appear d3">
         <div class="get-tile-icon"><img src="https://sellvia.com/images-for-landings/premium-business-bundle/icons/shopping-bag.svg" alt="products" loading="lazy"></div>
         <h3>Thousands of best-sellers</h3>
-        <p>Access to handpicked collections of the trendiest items. Add as many products as you like.</p>
+        <p>Handpicked collections of the trendiest products, ready to sell.</p>
       </div>
       <div class="get-tile appear d4">
         <div class="get-tile-icon"><img src="https://sellvia.com/images-for-landings/premium-business-bundle/icons/card.svg" alt="payment" loading="lazy"></div>
         <h3>Payment system</h3>
-        <p>Your store is fully ready to accept payments through credit cards, debit cards, PayPal, and more.</p>
+        <p>Ready to accept credit cards, debit cards, PayPal, Apple Pay and more.</p>
       </div>
       <div class="get-tile appear d5">
         <div class="get-tile-icon"><img src="https://sellvia.com/images-for-landings/premium-business-bundle/icons/profile-tick.svg" alt="manager" loading="lazy"></div>
         <h3>Personal manager</h3>
-        <p>Your dedicated manager will guide you through all the steps of your business launch and growth.</p>
+        <p>A real human to guide you through your launch and your first sales.</p>
       </div>
       <div class="get-tile appear d6">
         <div class="get-tile-icon"><img src="https://sellvia.com/images-for-landings/premium-business-bundle/icons/24-support.svg" alt="support" loading="lazy"></div>
         <h3>24/7 tech support</h3>
-        <p>Feel free to contact our friendly support team whenever you have any technical issues.</p>
+        <p>A friendly support team whenever you have a technical question.</p>
       </div>
     </div>
     <div style="text-align:center;margin-top:56px" class="appear">
-      <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled" id="getCtaBtn">Get my free store + VIP Bundle</a>
-      <p style="margin-top:12px;font-size:13px;color:#6e6e73">Get started in less than 60 seconds • Cancel anytime</p>
+      <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled" id="getCtaBtn">Get my free store + Bonus</a>
     </div>
   </div>
 </section>
@@ -3885,7 +3786,7 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   </div>
 
   <div style="text-align:center;margin-top:48px;" class="appear">
-    <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled">Get my free store + VIP Bundle</a>
+    <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled">Get my free store + Bonus</a>
     <p style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.35)">All products are pre-loaded in your store – no extra cost</p>
   </div>
 </section>
@@ -4046,7 +3947,39 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
       <div class="faq-categories">
 
         <div class="faq-category open">
-          <button class="faq-cat-q" aria-expanded="true">General questions
+          <button class="faq-cat-q" aria-expanded="true">The launch bonus
+            <svg class="faq-cat-chev" viewBox="0 0 14 8" aria-hidden="true">
+              <path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-cat-body">
+            <div class="faq-list">
+              <div class="faq-col">
+                <div class="faq-item">
+                  <button class="faq-q">How does the launch bonus work?<span class="faq-chevron">+</span></button>
+                  <div class="faq-a">The more you sell in your first 3 months, the bigger the cash bonus we add to your Sellvia balance. Reach $500 in sales and you earn $50; reach $10,000 or more and you earn $1,000. You unlock each tier as your sales grow – and it's on top of the profit you already keep on every sale.</div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-q">Can I actually reach the top tier?<span class="faq-chevron">+</span></button>
+                  <div class="faq-a">$10,000 in three months is ambitious but achievable for committed sellers – some of our owners pass it in their first weeks. Most people start at the lower tiers and build up, and every tier is a real reward you keep.</div>
+                </div>
+              </div>
+              <div class="faq-col">
+                <div class="faq-item">
+                  <button class="faq-q">Is the bonus guaranteed income?<span class="faq-chevron">+</span></button>
+                  <div class="faq-a">No. The bonus is a reward you earn by actually making sales – it's not a guaranteed payment, and growing a store takes real effort. Your manager helps you work toward each tier, but results vary from person to person.</div>
+                </div>
+                <div class="faq-item">
+                  <button class="faq-q">When and how do I get paid?<span class="faq-chevron">+</span></button>
+                  <div class="faq-a">Once your sales reach a tier within your first 3 months, the matching bonus is credited to your Sellvia balance, which you can put toward ads, tools, or your subscription. Sales are counted on net orders, excluding refunds and order fees.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category">
+          <button class="faq-cat-q" aria-expanded="false">General questions
             <svg class="faq-cat-chev" viewBox="0 0 14 8" aria-hidden="true">
               <path d="M1 1l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -4056,29 +3989,17 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
               <div class="faq-col">
                 <div class="faq-item">
                   <button class="faq-q">What exactly do I get with this offer?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">A turnkey online store built to your preferences, a switchable design to match any niche, a professional setup, everything you need to expand to Amazon, access to high-demand products, full team support and business ownership without effort – no experience required.</div>
+                  <div class="faq-a">A ready-made online store loaded with 100+ products, a professional design, a payment system, a personal manager, 24/7 support – plus the chance to earn up to $1,000 in launch bonuses as your sales grow over your first 3 months. No experience required.</div>
                 </div>
                 <div class="faq-item">
                   <button class="faq-q">What is Sellvia?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">Sellvia is an all-in-one ecommerce platform built for independent entrepreneurs to start, run and grow their own online businesses. An active Sellvia subscription keeps your store running with full functionality.</div>
-                </div>
-                <div class="faq-item">
-                  <button class="faq-q">How do I get my free store?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">Complete your order at checkout and fill out a short survey about your niche, design and domain-name preferences.</div>
+                  <div class="faq-a">Sellvia is an all-in-one platform built for beginners to start, run, and grow their own online business. An active Sellvia plan keeps your store running with full functionality.</div>
                 </div>
               </div>
               <div class="faq-col">
                 <div class="faq-item">
                   <button class="faq-q">How soon will I get my store?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">Your store is ready immediately after you finish the survey. Access details arrive in your inbox right away, and you can book a free training session with our team to launch your website.</div>
-                </div>
-                <div class="faq-item">
-                  <button class="faq-q">To (and from) which countries can I sell?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">You can live anywhere with stable internet, and your products can ship worldwide to nearly every country.</div>
-                </div>
-                <div class="faq-item">
-                  <button class="faq-q">What's the bonus Amazon Seller Kit?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">A ready-to-import file with top-selling Amazon product listings for your Amazon Seller account, plus a beginner's guide. Regular price $399 – included free here.</div>
+                  <div class="faq-a">Your store is ready right after you finish a short survey about your niche, design, and domain preferences. Access details arrive in your inbox immediately, and you can book a free training session to launch.</div>
                 </div>
               </div>
             </div>
@@ -4096,21 +4017,17 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
               <div class="faq-col">
                 <div class="faq-item">
                   <button class="faq-q">How much does Sellvia cost?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">Try free for 14 days with full functionality. After the trial, a $39 monthly subscription applies automatically.</div>
+                  <div class="faq-a">Try it free for 14 days with full functionality. After the trial, it's $39/month – about $1.30 a day. Order fees and your ad budget are separate and always your choice.</div>
                 </div>
                 <div class="faq-item">
-                  <button class="faq-q">Can I cancel my subscription at any time?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">Yes – cancel anytime with no strings attached if Sellvia isn't the right fit for your business.</div>
+                  <button class="faq-q">Can I cancel anytime?<span class="faq-chevron">+</span></button>
+                  <div class="faq-a">Yes – cancel anytime, no strings attached, if Sellvia isn't the right fit.</div>
                 </div>
               </div>
               <div class="faq-col">
                 <div class="faq-item">
-                  <button class="faq-q">Is there a store setup fee?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">No setup fees on any plan. You get a fully operating store that requires zero setup.</div>
-                </div>
-                <div class="faq-item">
-                  <button class="faq-q">Why do you need my credit card info?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">Your subscription fee is charged automatically after the free trial ends, so a valid card is needed for future charges.</div>
+                  <button class="faq-q">Is there a setup fee?<span class="faq-chevron">+</span></button>
+                  <div class="faq-a">No setup fees. You get a fully operating store that requires zero setup on your side.</div>
                 </div>
               </div>
             </div>
@@ -4127,34 +4044,14 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
             <div class="faq-list">
               <div class="faq-col">
                 <div class="faq-item">
-                  <button class="faq-q">Do I need IT experience?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">No. The software and dashboard are user-friendly enough for complete newcomers.</div>
-                </div>
-                <div class="faq-item">
-                  <button class="faq-q">Do I need any special equipment?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">No. You can operate from any place and device – PC, laptop, tablet or smartphone.</div>
-                </div>
-                <div class="faq-item">
-                  <button class="faq-q">Do I have to install anything?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">No. You get a 100% ready ecommerce website with all the necessary software pre-installed.</div>
-                </div>
-                <div class="faq-item">
-                  <button class="faq-q">Do I have to set up payment gateways?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">No. Every store includes Sellvia Payments, pre-installed and active – accepting Visa, Mastercard, American Express, Discover, Apple Pay, Google Pay and Klarna.</div>
+                  <button class="faq-q">Do I need any experience or special equipment?<span class="faq-chevron">+</span></button>
+                  <div class="faq-a">No. The dashboard is built for complete beginners, and you can run everything from any device – phone, tablet, or laptop.</div>
                 </div>
               </div>
               <div class="faq-col">
                 <div class="faq-item">
-                  <button class="faq-q">Can I use my own domain name?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">Yes. You can purchase a domain within Sellvia or use an existing one you already own.</div>
-                </div>
-                <div class="faq-item">
-                  <button class="faq-q">Do I get free web hosting?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">Yes – Sellvia includes secure, unlimited ecommerce hosting on every plan.</div>
-                </div>
-                <div class="faq-item">
-                  <button class="faq-q">Will you help with technical issues?<span class="faq-chevron">+</span></button>
-                  <div class="faq-a">Yes. Our first-class tech-support team answers questions and solves issues 24/7.</div>
+                  <button class="faq-q">Do I have to set up payments or hosting?<span class="faq-chevron">+</span></button>
+                  <div class="faq-a">No. Every store includes secure hosting and a pre-installed payment system accepting Visa, Mastercard, Amex, Discover, Apple Pay, Google Pay, and more.</div>
                 </div>
               </div>
             </div>
@@ -4164,10 +4061,10 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
       </div>
       <div>
         <div class="faq-cta appear d2">
-          <h3>Claim your free store + Premium Bundle.</h3>
-          <p>Seven done-for-you assets, $2,599 in value, yours at no cost. Free 14-day trial.</p>
-          <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled" style="height:60px;font-size:17px">Get my free store + VIP Bundle</a>
-          <p class="faq-cta-fine">Get started in less than 60 seconds • Cancel anytime</p>
+          <h3>Claim your free store + Launch bonus.</h3>
+          <p>A ready-made store, products people want, and up to $1,000 in bonuses as your sales grow over your first 3 months. Free 14-day trial.</p>
+          <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled" style="height:60px;font-size:17px">Get my free store + Bonus</a>
+          <p class="faq-cta-fine">Free for 14 days • $40 ad coupon • Then $39/month • Cancel anytime</p>
           <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;gap:8px">
             <span style="width:8px;height:8px;border-radius:50%;background:#30d158;flex-shrink:0;animation:pulse 2s infinite"></span>
             <span style="font-size:13px;color:rgba(255,255,255,0.45)" id="faqProof">847 people claimed their bundle today</span>
@@ -4196,9 +4093,9 @@ footer { background: #000; border-top: 1px solid rgba(255,255,255,0.08); }
   <div class="final-glow"></div>
   <div class="final-in">
     <h2 class="final-h2 appear">This could be<br>the day everything<br>changes.</h2>
-    <p class="final-sub appear d1">Your store, your products, your Premium Business Bundle – ready to go.</p>
+    <p class="final-sub appear d1">Your store, your products, your launch bonus – ready to go.</p>
     <div class="final-btns appear d2">
-      <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled">Get my free store + VIP Bundle</a>
+      <a href="https://sellvia.com/checkout/?product=custom&type_custom=free_basic_hosting" class="btn btn-filled">Get my free store + Bonus</a>
     </div>
     <p class="final-fine appear d3">Get started in less than 60 seconds • Cancel anytime</p>
     <button type="button" onclick="SellviaChat.open()" class="final-cta-link appear d4">
@@ -4336,8 +4233,8 @@ document.querySelectorAll('.appear, .appear-l, .appear-r, .appear-scale').forEac
 
 
 // ── FAQ ──
-// Category accordion (3 groups: General / Money / Technical). Only one
-// category open at a time; clicking the open one closes it.
+// Category accordion (4 groups: The launch bonus / General / Money / Technical).
+// Only one category open at a time; clicking the open one closes it.
 document.querySelectorAll('.faq-cat-q').forEach(catBtn => {
   catBtn.addEventListener('click', () => {
     const cat = catBtn.closest('.faq-category');
@@ -4383,8 +4280,7 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 // ── MARQUEE DRAG-TO-SCROLL (JS-driven) ──
 ;(function() {
   var configs = [
-    { selector: '.wix-track', speed: 0.12 },
-    { selector: '.store-strip', speed: 0.104 }
+    { selector: '.wix-track', speed: 0.12 }
   ];
   configs.forEach(function(cfg) {
     var track = document.querySelector(cfg.selector);
